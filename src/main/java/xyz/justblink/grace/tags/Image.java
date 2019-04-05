@@ -1,6 +1,6 @@
 package xyz.justblink.grace.tags;
 
-import com.blink.shared.article.ATagType;
+import xyz.justblink.grace.ATagType;
 
 public class Image extends SimpleATag {
     public Image(String resource, String caption) {

@@ -1,7 +1,8 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Header;
-import com.blink.atag.tags.SimpleATag;
+
+import xyz.justblink.grace.tags.Header;
+import xyz.justblink.grace.tags.SimpleATag;
 
 public class HeaderBuilder extends SimpleATagBuilder {
 

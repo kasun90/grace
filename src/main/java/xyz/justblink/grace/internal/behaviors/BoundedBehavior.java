@@ -1,8 +1,9 @@
 package xyz.justblink.grace.internal.behaviors;
 
-import com.blink.atag.Behavior;
-import com.blink.atag.BehaviorModifier;
-import com.blink.atag.tags.builders.SimpleATagBuilder;
+
+import xyz.justblink.grace.Behavior;
+import xyz.justblink.grace.BehaviorModifier;
+import xyz.justblink.grace.internal.builders.SimpleATagBuilder;
 
 public class BoundedBehavior extends BehaviorModifier {
 

@@ -1,8 +1,9 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.Terminal;
-import com.blink.atag.tags.Text;
+
+import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.tags.Terminal;
+import xyz.justblink.grace.tags.Text;
 
 public class TerminalBuilder extends SimpleATagBuilder {
 

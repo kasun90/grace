@@ -1,6 +1,6 @@
 package xyz.justblink.grace.internal;
 
-public class GraceRuntimeException extends Exception {
+public class GraceRuntimeException extends RuntimeException {
     public GraceRuntimeException() {
 
     }

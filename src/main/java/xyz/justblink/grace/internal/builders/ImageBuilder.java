@@ -1,7 +1,8 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Image;
-import com.blink.atag.tags.SimpleATag;
+
+import xyz.justblink.grace.tags.Image;
+import xyz.justblink.grace.tags.SimpleATag;
 
 public class ImageBuilder extends SimpleATagBuilder {
 

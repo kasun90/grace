@@ -1,9 +1,10 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.RichText;
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.Text;
-import com.blink.shared.article.ATagType;
+
+import xyz.justblink.grace.ATagType;
+import xyz.justblink.grace.tags.RichText;
+import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.tags.Text;
 
 public class RichTextBuilder extends SimpleATagBuilder {
 
@@ -11,7 +12,7 @@ public class RichTextBuilder extends SimpleATagBuilder {
     private StringBuilder builder;
     private boolean strongText = false;
 
-    public RichTextBuilder() {
+    RichTextBuilder() {
         builder = new StringBuilder();
         richText = new RichText();
     }

@@ -1,8 +1,8 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Code;
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.Text;
+import xyz.justblink.grace.tags.Code;
+import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.tags.Text;
 
 public class CodeBuilder extends SimpleATagBuilder {
 

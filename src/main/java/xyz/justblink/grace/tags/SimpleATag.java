@@ -1,7 +1,8 @@
 package xyz.justblink.grace.tags;
 
-import com.blink.shared.article.ATag;
-import com.blink.shared.article.ATagType;
+
+
+import xyz.justblink.grace.ATagType;
 
 import java.util.HashMap;
 

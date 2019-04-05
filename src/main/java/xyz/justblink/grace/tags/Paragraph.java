@@ -1,6 +1,7 @@
 package xyz.justblink.grace.tags;
 
-import com.blink.shared.article.ATagType;
+
+import xyz.justblink.grace.ATagType;
 
 public class Paragraph extends RichTag {
     public Paragraph() {

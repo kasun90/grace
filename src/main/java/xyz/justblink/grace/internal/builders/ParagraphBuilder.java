@@ -1,10 +1,11 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Link;
-import com.blink.atag.tags.Paragraph;
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.Text;
-import com.blink.shared.article.ATagType;
+
+import xyz.justblink.grace.ATagType;
+import xyz.justblink.grace.tags.Link;
+import xyz.justblink.grace.tags.Paragraph;
+import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.tags.Text;
 
 public class ParagraphBuilder extends SimpleATagBuilder {
 

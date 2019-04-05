@@ -1,9 +1,9 @@
 package xyz.justblink.grace;
 
 
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.builders.SimpleATagBuilder;
-import com.blink.core.exception.BlinkRuntimeException;
+import xyz.justblink.grace.internal.GraceRuntimeException;
+import xyz.justblink.grace.internal.builders.SimpleATagBuilder;
+import xyz.justblink.grace.tags.SimpleATag;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -24,10 +24,10 @@ public abstract class BehaviorModifier implements Behavior {
 
     protected void checkSingleBuilderPresence(Class<? extends Behavior> behaviorClass) {
         if (builders == null)
-            throw new BlinkRuntimeException(MessageFormat.format("{0} should have an builder associated",
+            throw new GraceRuntimeException(MessageFormat.format("{0} should have an builder associated",
                     behaviorClass.getName()));
         else if (builders.size() != 1)
-            throw new BlinkRuntimeException(MessageFormat.format("{0} only accepts single builder",
+            throw new GraceRuntimeException(MessageFormat.format("{0} only accepts single builder",
                     behaviorClass.getName()));
     }
 

@@ -1,7 +1,7 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Note;
-import com.blink.atag.tags.SimpleATag;
+import xyz.justblink.grace.tags.Note;
+import xyz.justblink.grace.tags.SimpleATag;
 
 public class NoteBuilder extends SimpleATagBuilder {
 

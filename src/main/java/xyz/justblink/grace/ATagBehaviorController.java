@@ -1,10 +1,12 @@
 package xyz.justblink.grace;
 
-import com.blink.atag.behaviors.GeneralBehavior;
-import com.blink.atag.tags.Paragraph;
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.builders.SimpleATagBuilder;
-import com.blink.core.exception.BlinkRuntimeException;
+
+
+import xyz.justblink.grace.internal.GraceRuntimeException;
+import xyz.justblink.grace.internal.behaviors.GeneralBehavior;
+import xyz.justblink.grace.internal.builders.SimpleATagBuilder;
+import xyz.justblink.grace.tags.Paragraph;
+import xyz.justblink.grace.tags.SimpleATag;
 
 import java.lang.reflect.Constructor;
 import java.text.MessageFormat;
@@ -15,10 +17,10 @@ import java.util.Optional;
 
 final class ATagBehaviorController implements BehaviorController, BuilderDelegate {
 
+    private final Map<Class<? extends Behavior>, Behavior> behaviorCache = new HashMap<>();
     private SimpleATagBuilder activeBuilder;
     private BuilderRegistry builderRegistry;
     private BehaviorConfiguration configuration;
-    private final Map<Class<? extends Behavior>, Behavior> behaviorCache = new HashMap<>();
 
     ATagBehaviorController(BuilderRegistry builderRegistry, BehaviorConfiguration configuration) throws Exception {
         this.builderRegistry = builderRegistry;
@@ -28,7 +30,7 @@ final class ATagBehaviorController implements BehaviorController, BuilderDelegat
     }
 
     @Override
-    public Behavior getBehavior(final String line) throws Exception{
+    public Behavior getBehavior(final String line) throws Exception {
         Behavior behavior;
         Optional<BehaviorRegistry.BehaviorRegistryEntry> behaviorEntryOptional = configuration.getRegistry().getEntries().
                 stream().filter(entry -> entry.getRule().evaluate(line)).findFirst();
@@ -70,7 +72,7 @@ final class ATagBehaviorController implements BehaviorController, BuilderDelegat
             }
         }
 
-        throw new BlinkRuntimeException(MessageFormat.format("Could not create behavior for the class {0} " +
+        throw new GraceRuntimeException(MessageFormat.format("Could not create behavior for the class {0} " +
                         "No valid constructor found",
                 behaviorClass.getName()));
     }
@@ -82,15 +84,15 @@ final class ATagBehaviorController implements BehaviorController, BuilderDelegat
     }
 
     @Override
-    public void setActiveBuilder(SimpleATagBuilder builder) {
-        this.activeBuilder = builder;
+    public SimpleATagBuilder getActiveBuilder() {
+        if (activeBuilder == null)
+            throw new GraceRuntimeException("No active builder found. There must be an active builder");
+        return activeBuilder;
     }
 
     @Override
-    public SimpleATagBuilder getActiveBuilder() {
-        if (activeBuilder == null)
-            throw new BlinkRuntimeException("No active builder found. There must be an active builder");
-        return activeBuilder;
+    public void setActiveBuilder(SimpleATagBuilder builder) {
+        this.activeBuilder = builder;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package xyz.justblink.grace;
 
-import com.blink.atag.tags.SimpleATag;
+
+import xyz.justblink.grace.tags.SimpleATag;
 
 import java.util.ArrayList;
 import java.util.Arrays;

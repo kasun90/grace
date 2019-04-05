@@ -1,6 +1,7 @@
 package xyz.justblink.grace.tags;
 
-import com.blink.shared.article.ATagType;
+
+import xyz.justblink.grace.ATagType;
 
 public class Text extends SimpleATag {
     public Text(String value) {

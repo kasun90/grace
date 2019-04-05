@@ -1,8 +1,10 @@
 package xyz.justblink.grace;
 
-import com.blink.atag.tags.*;
-import com.blink.atag.tags.builders.*;
-import com.blink.core.exception.BlinkRuntimeException;
+
+
+import xyz.justblink.grace.internal.GraceRuntimeException;
+import xyz.justblink.grace.internal.builders.*;
+import xyz.justblink.grace.tags.*;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ final class BuilderRegistry {
         builderMap.put(Gist.class, GistBuilder.class);
         builderMap.put(Header.class, HeaderBuilder.class);
         builderMap.put(Image.class, ImageBuilder.class);
-        builderMap.put(List.class, UnorderedListBuilder.class);
+        builderMap.put(DefaultList.class, UnorderedListBuilder.class);
         builderMap.put(Note.class, NoteBuilder.class);
         builderMap.put(OrderedList.class, OrderedListBuilder.class);
         builderMap.put(Paragraph.class, ParagraphBuilder.class);
@@ -36,7 +38,7 @@ final class BuilderRegistry {
 
         Class<? extends SimpleATagBuilder> aClass = builderMap.get(tag);
         if (aClass == null)
-            throw new BlinkRuntimeException(MessageFormat.format("No builder found for this tag: {0}",
+            throw new GraceRuntimeException(MessageFormat.format("No builder found for this tag: {0}",
                     tag.getName()));
         SimpleATagBuilder newBuilder = createBuilderInstance(aClass);
         builderCache.put(tag, newBuilder);
@@ -46,7 +48,7 @@ final class BuilderRegistry {
     private SimpleATagBuilder createBuilderInstance(Class<? extends SimpleATagBuilder> builderClass) throws Exception {
         return (SimpleATagBuilder) Arrays.stream(builderClass.getConstructors())
                 .filter(constructor1 -> constructor1.getParameterCount() == 0)
-                .findFirst().orElseThrow(() -> new BlinkRuntimeException("No valid constructor found")).newInstance();
+                .findFirst().orElseThrow(() -> new GraceRuntimeException("No valid constructor found")).newInstance();
 
     }
 

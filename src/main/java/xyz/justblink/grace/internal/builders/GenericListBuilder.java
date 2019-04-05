@@ -1,16 +1,17 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.List;
-import com.blink.atag.tags.SimpleATag;
-import com.blink.atag.tags.Text;
+
+import xyz.justblink.grace.tags.DefaultList;
+import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.tags.Text;
 
 public abstract  class GenericListBuilder extends SimpleATagBuilder {
 
-    private List list;
+    private DefaultList list;
     private RichTextBuilder builder;
-    private Class<? extends List> type;
+    private Class<? extends DefaultList> type;
 
-    GenericListBuilder(Class<? extends List> type) {
+    GenericListBuilder(Class<? extends DefaultList> type) {
         this.type = type;
         builder = new RichTextBuilder();
     }
@@ -18,7 +19,7 @@ public abstract  class GenericListBuilder extends SimpleATagBuilder {
     @Override
     public void initNew() throws Exception {
         super.initNew();
-        this.list = (List) type.getDeclaredConstructors()[0].newInstance();
+        this.list = (DefaultList) type.getDeclaredConstructors()[0].newInstance();
     }
 
     @Override

@@ -1,8 +1,8 @@
 package xyz.justblink.grace.tags;
 
-import com.blink.shared.article.ATagType;
+import xyz.justblink.grace.ATagType;
 
-public class OrderedList extends List {
+public class OrderedList extends DefaultList {
     public OrderedList() {
         super(ATagType.ORDERED_LIST);
     }

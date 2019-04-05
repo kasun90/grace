@@ -1,7 +1,7 @@
 package xyz.justblink.grace.internal.behaviors;
 
-import com.blink.atag.Behavior;
-import com.blink.atag.BehaviorModifier;
+import xyz.justblink.grace.Behavior;
+import xyz.justblink.grace.BehaviorModifier;
 
 public class GeneralBehavior extends BehaviorModifier {
 

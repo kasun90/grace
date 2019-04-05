@@ -1,7 +1,8 @@
 package xyz.justblink.grace.internal.builders;
 
-import com.blink.atag.tags.Gist;
-import com.blink.atag.tags.SimpleATag;
+
+import xyz.justblink.grace.tags.Gist;
+import xyz.justblink.grace.tags.SimpleATag;
 
 public class GistBuilder extends SimpleATagBuilder {
 
