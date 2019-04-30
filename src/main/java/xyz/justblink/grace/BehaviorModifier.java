@@ -2,19 +2,19 @@ package xyz.justblink.grace;
 
 
 import xyz.justblink.grace.internal.GraceRuntimeException;
-import xyz.justblink.grace.internal.builders.SimpleATagBuilder;
-import xyz.justblink.grace.tags.SimpleATag;
+import xyz.justblink.grace.internal.builders.BaseTagBuilder;
+import xyz.justblink.grace.tags.BaseTag;
 
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Optional;
 
 public abstract class BehaviorModifier implements Behavior {
-    protected List<SimpleATagBuilder> builders;
+    protected List<BaseTagBuilder> builders;
     protected BuilderDelegate builderDelegate;
-    protected SimpleATag currentOutput;
+    protected BaseTag currentOutput;
 
-    void setBuilders(List<SimpleATagBuilder> builders) {
+    void setBuilders(List<BaseTagBuilder> builders) {
         this.builders = builders;
     }
 
@@ -32,7 +32,7 @@ public abstract class BehaviorModifier implements Behavior {
     }
 
     @Override
-    public Optional<SimpleATag> output() {
+    public Optional<BaseTag> output() {
         return Optional.ofNullable(currentOutput);
     }
 

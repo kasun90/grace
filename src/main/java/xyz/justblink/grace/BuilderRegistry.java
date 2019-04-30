@@ -4,7 +4,8 @@ package xyz.justblink.grace;
 
 import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.builders.*;
-import xyz.justblink.grace.tags.*;
+import xyz.justblink.grace.internal.builders.subs.*;
+import xyz.justblink.grace.tags.subtags.*;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 final class BuilderRegistry {
-    private static Map<Class<? extends SimpleATag>, Class<? extends SimpleATagBuilder>> builderMap = new HashMap<>();
+    private static Map<Class<? extends SimpleTag>, Class<? extends BaseTagBuilder>> builderMap = new HashMap<>();
 
     static {
         builderMap.put(Code.class, CodeBuilder.class);
@@ -28,33 +29,33 @@ final class BuilderRegistry {
         builderMap.put(Terminal.class, TerminalBuilder.class);
     }
 
-    private final Map<Class<? extends SimpleATag>, SimpleATagBuilder> builderCache = new HashMap<>();
+    private final Map<Class<? extends SimpleTag>, BaseTagBuilder> builderCache = new HashMap<>();
 
-    SimpleATagBuilder get(Class<? extends SimpleATag> tag) throws Exception {
-        SimpleATagBuilder simpleATagBuilder = builderCache.get(tag);
+    BaseTagBuilder get(Class<? extends SimpleTag> tag) throws Exception {
+        BaseTagBuilder simpleATagBuilder = builderCache.get(tag);
 
         if (simpleATagBuilder != null)
             return simpleATagBuilder;
 
-        Class<? extends SimpleATagBuilder> aClass = builderMap.get(tag);
+        Class<? extends BaseTagBuilder> aClass = builderMap.get(tag);
         if (aClass == null)
             throw new GraceRuntimeException(MessageFormat.format("No builder found for this tag: {0}",
                     tag.getName()));
-        SimpleATagBuilder newBuilder = createBuilderInstance(aClass);
+        BaseTagBuilder newBuilder = createBuilderInstance(aClass);
         builderCache.put(tag, newBuilder);
         return newBuilder;
     }
 
-    private SimpleATagBuilder createBuilderInstance(Class<? extends SimpleATagBuilder> builderClass) throws Exception {
-        return (SimpleATagBuilder) Arrays.stream(builderClass.getConstructors())
+    private BaseTagBuilder createBuilderInstance(Class<? extends BaseTagBuilder> builderClass) throws Exception {
+        return (BaseTagBuilder) Arrays.stream(builderClass.getConstructors())
                 .filter(constructor1 -> constructor1.getParameterCount() == 0)
                 .findFirst().orElseThrow(() -> new GraceRuntimeException("No valid constructor found")).newInstance();
 
     }
 
-    final java.util.List<SimpleATagBuilder> get(java.util.List<Class<? extends SimpleATag>> tags) throws Exception {
-        java.util.List<SimpleATagBuilder> builders = new ArrayList<>();
-        for (Class<? extends SimpleATag> tag : tags) {
+    final java.util.List<BaseTagBuilder> get(java.util.List<Class<? extends SimpleTag>> tags) throws Exception {
+        java.util.List<BaseTagBuilder> builders = new ArrayList<>();
+        for (Class<? extends SimpleTag> tag : tags) {
             builders.add(get(tag));
         }
         return builders;
