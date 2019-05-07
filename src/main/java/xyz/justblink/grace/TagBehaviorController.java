@@ -5,6 +5,7 @@ package xyz.justblink.grace;
 import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.behaviors.GeneralBehavior;
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
+import xyz.justblink.grace.tags.BaseTag;
 import xyz.justblink.grace.tags.subtags.Paragraph;
 
 import java.lang.reflect.Constructor;
@@ -34,7 +35,7 @@ final class TagBehaviorController implements BehaviorController, BuilderDelegate
         Optional<BehaviorRegistry.BehaviorRegistryEntry> behaviorEntryOptional = configuration.getRegistry().getEntries().
                 stream().filter(entry -> entry.getRule().evaluate(line)).findFirst();
 
-        List<Class<? extends SimpleTag>> associatedTags = null;
+        List<Class<? extends BaseTag>> associatedTags = null;
 
         if (behaviorEntryOptional.isPresent()) {
             BehaviorRegistry.BehaviorRegistryEntry behaviorRegistryEntry = behaviorEntryOptional.get();
@@ -77,7 +78,7 @@ final class TagBehaviorController implements BehaviorController, BuilderDelegate
     }
 
     @Override
-    public Optional<SimpleTag> conclude() throws Exception {
+    public Optional<BaseTag> conclude() throws Exception {
         Behavior behavior = getBehavior(BehaviorConfiguration.BREAK_LINE);
         return behavior.action(BehaviorConfiguration.BREAK_LINE).output();
     }

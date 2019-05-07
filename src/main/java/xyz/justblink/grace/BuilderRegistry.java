@@ -5,16 +5,15 @@ package xyz.justblink.grace;
 import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.builders.*;
 import xyz.justblink.grace.internal.builders.subs.*;
+import xyz.justblink.grace.internal.inline.rich.RichInlineTagEmitter;
+import xyz.justblink.grace.tags.BaseTag;
 import xyz.justblink.grace.tags.subtags.*;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 final class BuilderRegistry {
-    private static Map<Class<? extends SimpleTag>, Class<? extends BaseTagBuilder>> builderMap = new HashMap<>();
+    private static Map<Class<? extends BaseTag>, Class<? extends BaseTagBuilder>> builderMap = new HashMap<>();
 
     static {
         builderMap.put(Code.class, CodeBuilder.class);
@@ -29,9 +28,9 @@ final class BuilderRegistry {
         builderMap.put(Terminal.class, TerminalBuilder.class);
     }
 
-    private final Map<Class<? extends SimpleTag>, BaseTagBuilder> builderCache = new HashMap<>();
+    private final Map<Class<? extends BaseTag>, BaseTagBuilder> builderCache = new HashMap<>();
 
-    BaseTagBuilder get(Class<? extends SimpleTag> tag) throws Exception {
+    BaseTagBuilder get(Class<? extends BaseTag> tag) throws Exception {
         BaseTagBuilder simpleATagBuilder = builderCache.get(tag);
 
         if (simpleATagBuilder != null)
@@ -42,8 +41,16 @@ final class BuilderRegistry {
             throw new GraceRuntimeException(MessageFormat.format("No builder found for this tag: {0}",
                     tag.getName()));
         BaseTagBuilder newBuilder = createBuilderInstance(aClass);
+        decorateAndInitializeBuilder(newBuilder);
         builderCache.put(tag, newBuilder);
         return newBuilder;
+    }
+
+    private void decorateAndInitializeBuilder(BaseTagBuilder builder) throws Exception {
+        if (builder instanceof InlineTagCapableBuilder) {
+            ((InlineTagCapableBuilder) builder).setEmitter(new RichInlineTagEmitter());
+        }
+        builder.initialize();
     }
 
     private BaseTagBuilder createBuilderInstance(Class<? extends BaseTagBuilder> builderClass) throws Exception {
@@ -53,9 +60,9 @@ final class BuilderRegistry {
 
     }
 
-    final java.util.List<BaseTagBuilder> get(java.util.List<Class<? extends SimpleTag>> tags) throws Exception {
-        java.util.List<BaseTagBuilder> builders = new ArrayList<>();
-        for (Class<? extends SimpleTag> tag : tags) {
+    final List<BaseTagBuilder> get(List<Class<? extends BaseTag>> tags) throws Exception {
+        List<BaseTagBuilder> builders = new ArrayList<>();
+        for (Class<? extends BaseTag> tag : tags) {
             builders.add(get(tag));
         }
         return builders;

@@ -13,7 +13,7 @@ public class SpecialStatefulBehavior extends BehaviorModifier {
         BaseTagBuilder builder = builders.get(0);
 
         if (!builder.isBuilding())
-            builder.initNew();
+            builder.initNewTag();
         builder.addLine(line);
         return this;
     }

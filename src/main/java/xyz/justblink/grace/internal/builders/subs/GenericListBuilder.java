@@ -18,8 +18,8 @@ public abstract  class GenericListBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public void initNew() throws Exception {
-        super.initNew();
+    public void initNewTag() throws Exception {
+        super.initNewTag();
         this.list = (DefaultList) type.getDeclaredConstructors()[0].newInstance();
     }
 
