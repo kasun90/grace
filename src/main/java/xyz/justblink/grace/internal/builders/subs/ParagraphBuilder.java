@@ -3,8 +3,8 @@ package xyz.justblink.grace.internal.builders.subs;
 
 import xyz.justblink.grace.internal.builders.InlineTagCapableBuilder;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Paragraph;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Paragraph;
 
 public class ParagraphBuilder extends InlineTagCapableBuilder implements InlineTagCatcher {
 
@@ -25,12 +25,12 @@ public class ParagraphBuilder extends InlineTagCapableBuilder implements InlineT
     }
 
     @Override
-    public void onEmit(BaseTag tag) {
+    public void onEmit(Tag tag) {
         paragraph.addChild(tag);
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         stopAndEmit().ifPresent(tag -> paragraph.addChild(tag));
         return paragraph;
     }

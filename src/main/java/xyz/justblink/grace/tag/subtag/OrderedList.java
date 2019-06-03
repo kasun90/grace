@@ -1,4 +1,4 @@
-package xyz.justblink.grace.tags.subtags;
+package xyz.justblink.grace.tag.subtag;
 
 import xyz.justblink.grace.TagType;
 

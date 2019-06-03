@@ -3,9 +3,9 @@ package xyz.justblink.grace.internal.builders.subs;
 
 import xyz.justblink.grace.TagType;
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.RichText;
-import xyz.justblink.grace.tags.subtags.Text;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.RichText;
+import xyz.justblink.grace.tag.subtag.Text;
 
 public class RichTextBuilder extends BaseTagBuilder {
 
@@ -41,7 +41,7 @@ public class RichTextBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         if (builder.length() != 0)
             richText.addChild(new Text(builder.toString()));
         return richText;

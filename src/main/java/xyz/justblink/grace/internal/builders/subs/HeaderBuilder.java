@@ -2,8 +2,8 @@ package xyz.justblink.grace.internal.builders.subs;
 
 
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Header;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Header;
 
 public class HeaderBuilder extends BaseTagBuilder {
 
@@ -21,7 +21,7 @@ public class HeaderBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         return header;
     }
 

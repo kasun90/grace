@@ -1,10 +1,10 @@
-package xyz.justblink.grace.tags.subtags;
+package xyz.justblink.grace.tag.subtag;
 
 
 import xyz.justblink.grace.TagType;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
-public class Link extends BaseTag {
+public class Link extends Tag {
 
     private String value;
     private String url;

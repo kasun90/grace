@@ -1,15 +1,15 @@
-package xyz.justblink.grace.tags.subtags;
+package xyz.justblink.grace.tag.subtag;
 
 
 import xyz.justblink.grace.TagType;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Terminal extends BaseTag {
+public class Terminal extends Tag {
 
-    private List<BaseTag> commands;
+    private List<Tag> commands;
     private String prompt;
 
     public Terminal() {
@@ -17,7 +17,7 @@ public class Terminal extends BaseTag {
         commands = new LinkedList<>();
     }
 
-    public void addCommand(BaseTag command) {
+    public void addCommand(Tag command) {
         commands.add(command);
     }
 

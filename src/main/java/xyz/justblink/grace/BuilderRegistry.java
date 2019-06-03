@@ -6,14 +6,14 @@ import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.builders.*;
 import xyz.justblink.grace.internal.builders.subs.*;
 import xyz.justblink.grace.internal.inline.rich.RichInlineTagEmitter;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.*;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.*;
 
 import java.text.MessageFormat;
 import java.util.*;
 
 final class BuilderRegistry {
-    private static Map<Class<? extends BaseTag>, Class<? extends BaseTagBuilder>> builderMap = new HashMap<>();
+    private static Map<Class<? extends Tag>, Class<? extends BaseTagBuilder>> builderMap = new HashMap<>();
 
     static {
         builderMap.put(Code.class, CodeBuilder.class);
@@ -28,9 +28,9 @@ final class BuilderRegistry {
         builderMap.put(Terminal.class, TerminalBuilder.class);
     }
 
-    private final Map<Class<? extends BaseTag>, BaseTagBuilder> builderCache = new HashMap<>();
+    private final Map<Class<? extends Tag>, BaseTagBuilder> builderCache = new HashMap<>();
 
-    BaseTagBuilder get(Class<? extends BaseTag> tag) throws Exception {
+    BaseTagBuilder get(Class<? extends Tag> tag) throws Exception {
         BaseTagBuilder simpleATagBuilder = builderCache.get(tag);
 
         if (simpleATagBuilder != null)
@@ -60,9 +60,9 @@ final class BuilderRegistry {
 
     }
 
-    final List<BaseTagBuilder> get(List<Class<? extends BaseTag>> tags) throws Exception {
+    final List<BaseTagBuilder> get(List<Class<? extends Tag>> tags) throws Exception {
         List<BaseTagBuilder> builders = new ArrayList<>();
-        for (Class<? extends BaseTag> tag : tags) {
+        for (Class<? extends Tag> tag : tags) {
             builders.add(get(tag));
         }
         return builders;

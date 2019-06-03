@@ -5,7 +5,7 @@ import xyz.justblink.grace.internal.behaviors.BoundedBehavior;
 import xyz.justblink.grace.internal.behaviors.BreakTagBehavior;
 import xyz.justblink.grace.internal.behaviors.SingleLineBehavior;
 import xyz.justblink.grace.internal.behaviors.SpecialStatefulBehavior;
-import xyz.justblink.grace.tags.subtags.*;
+import xyz.justblink.grace.tag.subtag.*;
 
 final class BehaviorConfiguration {
     static final String BREAK_LINE = "[BREAK]";

@@ -3,7 +3,7 @@ package xyz.justblink.grace;
 
 import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public abstract class BehaviorModifier implements Behavior {
     protected List<BaseTagBuilder> builders;
     protected BuilderDelegate builderDelegate;
-    protected BaseTag currentOutput;
+    protected Tag currentOutput;
 
     void setBuilders(List<BaseTagBuilder> builders) {
         this.builders = builders;
@@ -32,7 +32,7 @@ public abstract class BehaviorModifier implements Behavior {
     }
 
     @Override
-    public Optional<BaseTag> output() {
+    public Optional<Tag> output() {
         return Optional.ofNullable(currentOutput);
     }
 

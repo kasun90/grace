@@ -2,8 +2,8 @@ package xyz.justblink.grace.internal.builders.subs;
 
 
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Image;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Image;
 
 public class ImageBuilder extends BaseTagBuilder {
 
@@ -30,7 +30,7 @@ public class ImageBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         return new Image(resource, caption);
     }
 

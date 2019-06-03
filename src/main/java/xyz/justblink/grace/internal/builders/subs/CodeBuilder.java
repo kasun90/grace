@@ -1,9 +1,9 @@
 package xyz.justblink.grace.internal.builders.subs;
 
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Code;
-import xyz.justblink.grace.tags.subtags.Text;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Code;
+import xyz.justblink.grace.tag.subtag.Text;
 
 public class CodeBuilder extends BaseTagBuilder {
 
@@ -17,7 +17,7 @@ public class CodeBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         return code;
     }
 

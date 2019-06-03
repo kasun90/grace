@@ -1,7 +1,7 @@
 package xyz.justblink.grace.internal.inline;
 
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 public interface InlineTagCatcher {
-    void onEmit(BaseTag tag);
+    void onEmit(Tag tag);
 }

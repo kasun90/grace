@@ -3,7 +3,7 @@ package xyz.justblink.grace.internal.builders;
 import xyz.justblink.grace.internal.GraceRuntimeException;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
 import xyz.justblink.grace.internal.inline.InlineTagEmitter;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.text.MessageFormat;
 import java.util.Optional;
@@ -29,12 +29,12 @@ public abstract class InlineTagCapableBuilder extends BaseTagBuilder {
 
     private void checkEmitterConfigurability() {
         if (emitter == null)
-            throw new GraceRuntimeException(MessageFormat.format("{0} is not configured to process inline tags" +
+            throw new GraceRuntimeException(MessageFormat.format("{0} is not configured to process inline tag" +
                             " or you have tried to use in the constructor",
                     this.getClass().getSimpleName()));
     }
 
-    protected Optional<BaseTag> stopAndEmit() {
+    protected Optional<Tag> stopAndEmit() {
         return emitter.stopAndEmit();
     }
 

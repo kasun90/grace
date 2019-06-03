@@ -1,22 +1,22 @@
-package xyz.justblink.grace.tags.subtags;
+package xyz.justblink.grace.tag.subtag;
 
 
 import xyz.justblink.grace.TagType;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class RichTag extends BaseTag {
+public class RichTag extends Tag {
 
-    private List<BaseTag> children;
+    private List<Tag> children;
 
     RichTag(TagType type) {
         super(type);
         children = new LinkedList<>();
     }
 
-    public void addChild(BaseTag tag) {
+    public void addChild(Tag tag) {
         children.add(tag);
     }
 

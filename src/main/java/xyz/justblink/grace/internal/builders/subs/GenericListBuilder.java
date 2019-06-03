@@ -2,9 +2,9 @@ package xyz.justblink.grace.internal.builders.subs;
 
 
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.DefaultList;
-import xyz.justblink.grace.tags.subtags.Text;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.DefaultList;
+import xyz.justblink.grace.tag.subtag.Text;
 
 public abstract  class GenericListBuilder extends BaseTagBuilder {
 
@@ -37,7 +37,7 @@ public abstract  class GenericListBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         return list;
     }
 

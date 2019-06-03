@@ -1,7 +1,7 @@
 package xyz.justblink.grace;
 
 
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ final class BehaviorRegistry {
     private final List<BehaviorRegistryEntry> entries = new ArrayList<>();
 
     @SafeVarargs
-    final void register(Rule rule, Class<? extends Behavior> behaviorClass, Class<? extends BaseTag>... tags) {
+    final void register(Rule rule, Class<? extends Behavior> behaviorClass, Class<? extends Tag>... tags) {
         entries.add(new BehaviorRegistryEntry(rule, behaviorClass, tags));
     }
 
@@ -23,10 +23,10 @@ final class BehaviorRegistry {
     class BehaviorRegistryEntry {
         private Rule rule;
         private Class<? extends Behavior> behaviorClass;
-        private List<Class<? extends BaseTag>> associatedTags;
+        private List<Class<? extends Tag>> associatedTags;
 
         @SafeVarargs
-        BehaviorRegistryEntry(Rule rule, Class<? extends Behavior> behaviorClass, Class<? extends BaseTag>... tags) {
+        BehaviorRegistryEntry(Rule rule, Class<? extends Behavior> behaviorClass, Class<? extends Tag>... tags) {
             this.rule = rule;
             this.behaviorClass = behaviorClass;
             this.associatedTags = Arrays.asList(tags);
@@ -40,7 +40,7 @@ final class BehaviorRegistry {
             return behaviorClass;
         }
 
-        List<Class<? extends BaseTag>> getAssociatedTags() {
+        List<Class<? extends Tag>> getAssociatedTags() {
             return associatedTags;
         }
     }

@@ -2,8 +2,8 @@ package xyz.justblink.grace.internal.builders.subs;
 
 
 import xyz.justblink.grace.internal.builders.BaseTagBuilder;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Gist;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Gist;
 
 public class GistBuilder extends BaseTagBuilder {
 
@@ -31,7 +31,7 @@ public class GistBuilder extends BaseTagBuilder {
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         return new Gist(source, file);
     }
 

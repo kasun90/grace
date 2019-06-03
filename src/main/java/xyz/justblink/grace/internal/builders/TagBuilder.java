@@ -1,12 +1,12 @@
 package xyz.justblink.grace.internal.builders;
 
 
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 public interface TagBuilder {
     void addLine(String line);
 
-    BaseTag build();
+    Tag build();
 
     boolean isBuilding();
 

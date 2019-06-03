@@ -2,8 +2,8 @@ package xyz.justblink.grace.internal.builders.subs;
 
 import xyz.justblink.grace.internal.builders.InlineTagCapableBuilder;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Note;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Note;
 
 public class NoteBuilder extends InlineTagCapableBuilder implements InlineTagCatcher {
 
@@ -20,12 +20,12 @@ public class NoteBuilder extends InlineTagCapableBuilder implements InlineTagCat
     }
 
     @Override
-    public void onEmit(BaseTag tag) {
+    public void onEmit(Tag tag) {
         note.addChild(tag);
     }
 
     @Override
-    public BaseTag build() {
+    public Tag build() {
         stopAndEmit().ifPresent(tag -> note.addChild(tag));
         return note;
     }

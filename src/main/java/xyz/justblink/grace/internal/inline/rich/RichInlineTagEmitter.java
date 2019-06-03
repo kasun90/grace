@@ -3,9 +3,9 @@ package xyz.justblink.grace.internal.inline.rich;
 import xyz.justblink.grace.TagType;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
 import xyz.justblink.grace.internal.inline.InlineTagEmitter;
-import xyz.justblink.grace.tags.BaseTag;
-import xyz.justblink.grace.tags.subtags.Link;
-import xyz.justblink.grace.tags.subtags.Text;
+import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.subtag.Link;
+import xyz.justblink.grace.tag.subtag.Text;
 
 import java.util.Optional;
 
@@ -61,7 +61,7 @@ public class RichInlineTagEmitter implements InlineTagEmitter {
         }
     }
 
-    private void emit(BaseTag tag) {
+    private void emit(Tag tag) {
         if (catcher != null)
             catcher.onEmit(tag);
     }
@@ -72,7 +72,7 @@ public class RichInlineTagEmitter implements InlineTagEmitter {
     }
 
     @Override
-    public Optional<BaseTag> stopAndEmit() {
+    public Optional<Tag> stopAndEmit() {
         if (builder.length() != 0) {
             String text = builder.toString();
             builder.setLength(0);

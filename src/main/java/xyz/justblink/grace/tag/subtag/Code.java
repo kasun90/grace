@@ -1,13 +1,13 @@
-package xyz.justblink.grace.tags.subtags;
+package xyz.justblink.grace.tag.subtag;
 
 
 import xyz.justblink.grace.TagType;
-import xyz.justblink.grace.tags.BaseTag;
+import xyz.justblink.grace.tag.Tag;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Code extends BaseTag {
+public class Code extends Tag {
 
     private List<Text> lines;
 
