@@ -32,7 +32,7 @@ public class TerminalBuilder extends BaseTagBuilder {
 
     @Override
     public boolean isBuilding() {
-        return terminal != null && terminal.getCommandsCount() != 0;
+        return terminal != null && terminal.hasChildren();
     }
 
     @Override

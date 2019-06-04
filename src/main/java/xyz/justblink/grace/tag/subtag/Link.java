@@ -2,6 +2,7 @@ package xyz.justblink.grace.tag.subtag;
 
 
 import xyz.justblink.grace.tag.Tag;
+import xyz.justblink.grace.tag.Visitor;
 
 public class Link extends Tag {
 
@@ -11,5 +12,10 @@ public class Link extends Tag {
     public Link(String value, String url) {
         this.value = value;
         this.url = url;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -23,7 +23,7 @@ public class CodeBuilder extends BaseTagBuilder {
 
     @Override
     public boolean isBuilding() {
-        return code != null && code.getLineCount() != 0;
+        return code != null && code.hasChildren();
     }
 
     @Override

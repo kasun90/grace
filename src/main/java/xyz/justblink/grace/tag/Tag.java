@@ -9,6 +9,8 @@ public abstract class Tag implements Serializable {
     private Tag firstChild;
     private Tag lastChild;
 
+    public abstract void accept(Visitor visitor);
+
     public Tag getNext() {
         return next;
     }

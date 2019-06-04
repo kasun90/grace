@@ -1,6 +1,9 @@
 package xyz.justblink.grace.tag;
 
-import xyz.justblink.grace.TagType;
-
 public final class Document extends Tag {
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

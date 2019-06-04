@@ -1,4 +1,4 @@
-package xyz.justblink.grace;
+package xyz.justblink.grace.tag;
 
 public enum TagType {
 	PARAGRAPH,
