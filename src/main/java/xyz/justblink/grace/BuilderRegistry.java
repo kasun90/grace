@@ -24,7 +24,6 @@ final class BuilderRegistry {
         builderMap.put(Note.class, NoteBuilder.class);
         builderMap.put(OrderedList.class, OrderedListBuilder.class);
         builderMap.put(Paragraph.class, ParagraphBuilder.class);
-        builderMap.put(RichText.class, RichTextBuilder.class);
         builderMap.put(Terminal.class, TerminalBuilder.class);
     }
 

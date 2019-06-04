@@ -21,18 +21,18 @@ public class NoteBuilder extends InlineTagCapableBuilder implements InlineTagCat
 
     @Override
     public void onEmit(Tag tag) {
-        note.addChild(tag);
+        note.appendChild(tag);
     }
 
     @Override
     public Tag build() {
-        stopAndEmit().ifPresent(tag -> note.addChild(tag));
+        stopAndEmit().ifPresent(tag -> note.appendChild(tag));
         return note;
     }
 
     @Override
     public boolean isBuilding() {
-        return note.getChildrenLength() != 0 || hasCache();
+        return note.hasChildren() || hasCache();
     }
 
     @Override

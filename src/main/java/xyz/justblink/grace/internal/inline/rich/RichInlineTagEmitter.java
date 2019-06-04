@@ -1,10 +1,10 @@
 package xyz.justblink.grace.internal.inline.rich;
 
-import xyz.justblink.grace.TagType;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
 import xyz.justblink.grace.internal.inline.InlineTagEmitter;
 import xyz.justblink.grace.tag.Tag;
 import xyz.justblink.grace.tag.subtag.Link;
+import xyz.justblink.grace.tag.subtag.StrongText;
 import xyz.justblink.grace.tag.subtag.Text;
 
 import java.util.Optional;
@@ -44,7 +44,7 @@ public class RichInlineTagEmitter implements InlineTagEmitter {
                 }
             } else if (c == '^') {
                 if (strongText) {
-                    emit(new Text(TagType.STRONG_TEXT, builder.toString()));
+                    emit(new StrongText(builder.toString()));
                     builder.setLength(0);
                     strongText = false;
                 } else {
@@ -77,8 +77,7 @@ public class RichInlineTagEmitter implements InlineTagEmitter {
             String text = builder.toString();
             builder.setLength(0);
             return Optional.of(new Text(text));
-        }
-        else
+        } else
             return Optional.empty();
     }
 

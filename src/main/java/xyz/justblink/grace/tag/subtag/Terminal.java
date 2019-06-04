@@ -1,7 +1,6 @@
 package xyz.justblink.grace.tag.subtag;
 
 
-import xyz.justblink.grace.TagType;
 import xyz.justblink.grace.tag.Tag;
 
 import java.util.LinkedList;
@@ -13,7 +12,6 @@ public class Terminal extends Tag {
     private String prompt;
 
     public Terminal() {
-        super(TagType.TERMINAL);
         commands = new LinkedList<>();
     }
 

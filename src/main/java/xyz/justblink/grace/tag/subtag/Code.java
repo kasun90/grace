@@ -1,7 +1,6 @@
 package xyz.justblink.grace.tag.subtag;
 
 
-import xyz.justblink.grace.TagType;
 import xyz.justblink.grace.tag.Tag;
 
 import java.util.LinkedList;
@@ -16,7 +15,6 @@ public class Code extends Tag {
     }
 
     public Code(List<Text> lines) {
-        super(TagType.CODE);
         this.lines = lines;
     }
 

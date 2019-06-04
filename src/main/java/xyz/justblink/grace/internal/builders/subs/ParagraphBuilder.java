@@ -26,18 +26,18 @@ public class ParagraphBuilder extends InlineTagCapableBuilder implements InlineT
 
     @Override
     public void onEmit(Tag tag) {
-        paragraph.addChild(tag);
+        paragraph.appendChild(tag);
     }
 
     @Override
     public Tag build() {
-        stopAndEmit().ifPresent(tag -> paragraph.addChild(tag));
+        stopAndEmit().ifPresent(tag -> paragraph.appendChild(tag));
         return paragraph;
     }
 
     @Override
     public boolean isBuilding() {
-        return paragraph.getChildrenLength() != 0 || hasCache();
+        return paragraph.hasChildren() || hasCache();
     }
 
     @Override

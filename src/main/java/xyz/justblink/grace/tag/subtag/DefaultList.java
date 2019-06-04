@@ -1,14 +1,8 @@
 package xyz.justblink.grace.tag.subtag;
 
 
-import xyz.justblink.grace.TagType;
+import xyz.justblink.grace.tag.Tag;
 
-public class DefaultList extends RichTag {
-    public DefaultList() {
-        this(TagType.UNORDERED_LIST);
-    }
+public class DefaultList extends Tag {
 
-    DefaultList(TagType type) {
-        super(type);
-    }
 }

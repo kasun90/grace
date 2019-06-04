@@ -1,10 +1,7 @@
 package xyz.justblink.grace.tag.subtag;
 
 
-import xyz.justblink.grace.TagType;
+import xyz.justblink.grace.tag.Tag;
 
-public class Note extends RichTag {
-    public Note() {
-        super(TagType.NOTE);
-    }
+public class Note extends Tag {
 }

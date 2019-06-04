@@ -1,43 +1,40 @@
 package xyz.justblink.grace.tag;
 
-import xyz.justblink.grace.TagType;
-
 import java.io.Serializable;
 
 public abstract class Tag implements Serializable {
-    private TagType type;
     private Tag next;
     private Tag previous;
     private Tag parent;
     private Tag firstChild;
     private Tag lastChild;
 
-    public Tag(TagType type) {
-        this.type = type;
+    public Tag getNext() {
+        return next;
     }
 
     public void setNext(Tag nextTag) {
         this.next = nextTag;
     }
 
-    public Tag getNext() {
-        return next;
+    public Tag getPrevious() {
+        return previous;
     }
 
     public void setPrevious(Tag previous) {
         this.previous = previous;
     }
 
-    public Tag getPrevious() {
-        return previous;
+    public Tag getParent() {
+        return parent;
     }
 
     public void setParent(Tag parent) {
         this.parent = parent;
     }
 
-    public Tag getParent() {
-        return parent;
+    public Tag getFirstChild() {
+        return firstChild;
     }
 
     public void appendChild(Tag child) {
@@ -80,6 +77,10 @@ public abstract class Tag implements Serializable {
         this.parent = null;
         this.next = null;
         this.previous = null;
+    }
+
+    public boolean hasChildren() {
+        return this.firstChild != null || this.lastChild != null;
     }
 
 }

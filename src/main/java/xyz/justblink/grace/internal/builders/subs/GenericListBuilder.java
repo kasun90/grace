@@ -1,20 +1,24 @@
 package xyz.justblink.grace.internal.builders.subs;
 
 
-import xyz.justblink.grace.internal.builders.BaseTagBuilder;
+import xyz.justblink.grace.internal.builders.InlineTagCapableBuilder;
+import xyz.justblink.grace.internal.inline.InlineTagCatcher;
 import xyz.justblink.grace.tag.Tag;
 import xyz.justblink.grace.tag.subtag.DefaultList;
 import xyz.justblink.grace.tag.subtag.Text;
 
-public abstract  class GenericListBuilder extends BaseTagBuilder {
+public abstract class GenericListBuilder extends InlineTagCapableBuilder implements InlineTagCatcher {
 
     private DefaultList list;
-    private RichTextBuilder builder;
     private Class<? extends DefaultList> type;
 
     GenericListBuilder(Class<? extends DefaultList> type) {
         this.type = type;
-        builder = new RichTextBuilder();
+    }
+
+    @Override
+    public void initialize() throws Exception {
+        registerCatcher(this);
     }
 
     @Override
@@ -27,13 +31,17 @@ public abstract  class GenericListBuilder extends BaseTagBuilder {
     public void addLine(String line) {
         String[] split = line.split("\\s+", 2);
         if (split.length != 2)
-            list.addChild(new Text(line));
+            list.appendChild(new Text(line));
         else {
-            builder.addLine(split[1]);
-            list.addChild(builder.build());
-            builder.reset();
+            feedLine(split[1]);
+            stopAndEmit().ifPresent(tag -> list.appendChild(tag));
         }
 
+    }
+
+    @Override
+    public void onEmit(Tag tag) {
+        list.appendChild(tag);
     }
 
     @Override
