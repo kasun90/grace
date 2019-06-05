@@ -9,10 +9,6 @@ import java.util.List;
 
 public class Code extends Tag {
 
-    public void addLine(Text command) {
-        appendChild(command);
-    }
-
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

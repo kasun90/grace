@@ -13,8 +13,12 @@ public class ExportableTag implements Serializable {
     private Map<String, Object> data;
     private List<ExportableTag> children;
 
-    public ExportableTag(TagType type) {
+    private ExportableTag(TagType type) {
         this.type = type;
+    }
+
+    public static ExportableTag create(TagType type) {
+        return new ExportableTag(type);
     }
 
     public void set(String key, Object value) {

@@ -14,6 +14,14 @@ public class Link extends Tag {
         this.url = url;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

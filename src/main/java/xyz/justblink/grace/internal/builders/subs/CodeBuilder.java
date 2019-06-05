@@ -13,7 +13,7 @@ public class CodeBuilder extends BaseTagBuilder {
     public void addLine(String line) {
         if (code == null)
             code = new Code();
-        code.addLine(new Text(line));
+        code.appendChild(new Text(line));
     }
 
     @Override

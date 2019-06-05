@@ -13,6 +13,14 @@ public class Header extends Tag {
         this.size = size;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

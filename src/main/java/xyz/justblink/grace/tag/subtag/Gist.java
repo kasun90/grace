@@ -14,6 +14,14 @@ public class Gist extends Tag {
         this.file = file;
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

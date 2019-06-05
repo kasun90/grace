@@ -13,6 +13,14 @@ public class Image extends Tag {
         this.resource = resource;
     }
 
+    public String getCaption() {
+        return caption;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

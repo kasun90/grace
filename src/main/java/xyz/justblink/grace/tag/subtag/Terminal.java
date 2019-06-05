@@ -10,10 +10,6 @@ import java.util.List;
 public class Terminal extends Tag {
     private String prompt;
 
-    public void addCommand(Tag command) {
-        appendChild(command);
-    }
-
     public void setPrompt(String prompt) {
         this.prompt = prompt;
     }

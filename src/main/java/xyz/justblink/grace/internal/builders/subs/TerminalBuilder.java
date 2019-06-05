@@ -22,7 +22,7 @@ public class TerminalBuilder extends BaseTagBuilder {
         }
 
         if (split.length == 2)
-            terminal.addCommand(new Text(split[1]));
+            terminal.appendChild(new Text(split[1]));
     }
 
     @Override
