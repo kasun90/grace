@@ -18,4 +18,8 @@ public class Terminal extends Tag {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    public String getPrompt() {
+        return prompt;
+    }
 }

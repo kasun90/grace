@@ -117,7 +117,9 @@ public class ExportableTagRenderer implements Renderer<ExportableTag> {
 
         @Override
         public void visit(Terminal terminal) {
-            visitChildren(ExportableTag.create(TagType.TERMINAL), terminal);
+            ExportableTag terminalExportable = ExportableTag.create(TagType.TERMINAL);
+            terminalExportable.set("prompt", terminal.getPrompt());
+            visitChildren(terminalExportable, terminal);
         }
 
         @Override
