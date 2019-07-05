@@ -129,6 +129,11 @@ public class ExportableTagRenderer implements Renderer<ExportableTag> {
             addToParent(textExport);
         }
 
+        @Override
+        public void visit(RichText richText) {
+            visitChildren(ExportableTag.create(TagType.RICH_TEXT), richText);
+        }
+
         private void visitChildren(ExportableTag exportableTag, Tag tag) {
             pushToDeque(exportableTag);
             visitChildren(tag);

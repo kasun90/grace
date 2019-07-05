@@ -32,4 +32,6 @@ public interface Visitor {
 
     void visit(Text text);
 
+    void visit(RichText richText);
+
 }

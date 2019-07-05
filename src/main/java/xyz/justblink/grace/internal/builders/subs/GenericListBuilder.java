@@ -5,12 +5,13 @@ import xyz.justblink.grace.internal.builders.InlineTagCapableBuilder;
 import xyz.justblink.grace.internal.inline.InlineTagCatcher;
 import xyz.justblink.grace.tag.Tag;
 import xyz.justblink.grace.tag.subtag.DefaultList;
-import xyz.justblink.grace.tag.subtag.Text;
+import xyz.justblink.grace.tag.subtag.RichText;
 
 public abstract class GenericListBuilder extends InlineTagCapableBuilder implements InlineTagCatcher {
 
     private DefaultList list;
     private Class<? extends DefaultList> type;
+    private RichText currentRichText;
 
     GenericListBuilder(Class<? extends DefaultList> type) {
         this.type = type;
@@ -30,18 +31,17 @@ public abstract class GenericListBuilder extends InlineTagCapableBuilder impleme
     @Override
     public void addLine(String line) {
         String[] split = line.split("\\s+", 2);
-        if (split.length != 2)
-            list.appendChild(new Text(line));
-        else {
-            feedLine(split[1]);
-            stopAndEmit().ifPresent(tag -> list.appendChild(tag));
-        }
+        String listLine = split.length != 2 ? line : split[1];
 
+        this.currentRichText = new RichText();
+        feedLine(listLine);
+        stopAndEmit().ifPresent(tag -> currentRichText.appendChild(tag));
+        list.appendChild(currentRichText);
     }
 
     @Override
     public void onEmit(Tag tag) {
-        list.appendChild(tag);
+        currentRichText.appendChild(tag);
     }
 
     @Override
@@ -57,5 +57,6 @@ public abstract class GenericListBuilder extends InlineTagCapableBuilder impleme
     @Override
     public void reset() {
         list = null;
+        currentRichText = null;
     }
 }
