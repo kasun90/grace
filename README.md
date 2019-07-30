@@ -9,9 +9,9 @@ processed result from [Grace](https://github.com/kasun90/grace) to this React co
 ### Usage
 
 ```
-Document process = Processor.process(new File("sample.txt"));
+Document document = Processor.process(new File("sample.txt"));
 ExportableTagRenderer tagRenderer = ExportableTagRenderer.builder().build();
-ExportableTag render = tagRenderer.render(process);
+ExportableTag exportableTag = tagRenderer.render(document);
 ```
 
 This ``ExportableTag`` can be directly fed in to the React component.
