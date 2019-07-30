@@ -83,3 +83,7 @@ Syntax
 ````
 [gist](<github_username>/<gist_id>)
 ````
+
+## Author
+
+[Kasun Piyumal](https://github.com/kasun90)
